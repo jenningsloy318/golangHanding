@@ -9,7 +9,8 @@ This repo is my study history for golang, follow the tutouial [Go 系列教程�
 - [ 5. 常量](chap05/chap05.md)
 - [ 6. 函数（Function）](chap06/chap06.md)
 - [ 7. 包](chap07/chap07.md)
-- [8. if-else 语句](chap08/chap08.md)
+- [ 8. if-else 语句](chap08/chap08.md)
+- [ 9. 循环](chap09/chap09.md)
 
 ## 
 
