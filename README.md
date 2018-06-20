@@ -18,6 +18,7 @@ This repo is my study history for golang, follow the tutouial [Go 系列教程�
 
 ## 
 
-command line 可以用 kingpin "gopkg.in/alecthomas/kingpin.v2"
-示例如下：
-https://github.com/snail007/goproxy/blob/09158ebaa2144bbbed5a1006ae294cae2686c664/config.go
+
+常用库：
+
+-  命令行参数可以用 kingpin "gopkg.in/alecthomas/kingpin.v2"
