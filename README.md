@@ -13,6 +13,7 @@ This repo is my study history for golang, follow the tutouial [Go 系列教程�
 - [ 9. 循环](chap09/chap09.md)
 - [ 10. switch 语句](chap10/chap10.md)
 - [ 11. 数组和切片](chap11/chap11.md)
+- [ 12. 可变参数函数 ](chap12/chap12.md)
 
 ## 
 
