@@ -1,6 +1,7 @@
 # golang-startup
 
 This repo is my study history for golang, follow the tutouial [Go 系列教程（Golang tutorial series）](https://studygolang.com/subject/2)
+英文版地址 [Golang tutorial series](https://golangbot.com/learn-golang-series/)
 
 - [ 1. 介绍与安装](chap01/chap01.md)
 - [ 2. Hello World](chap02/chap02.md)
