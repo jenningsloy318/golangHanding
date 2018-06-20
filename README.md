@@ -12,6 +12,7 @@ This repo is my study history for golang, follow the tutouial [Go 系列教程�
 - [ 8. if-else 语句](chap08/chap08.md)
 - [ 9. 循环](chap09/chap09.md)
 - [ 10. switch 语句](chap10/chap10.md)
+- [ 11. 数组和切片](chap11/chap11.md)
 
 ## 
 
