@@ -17,6 +17,7 @@ This repo is my study history for golang, follow the tutouial [Go 系列教程�
 - [ 12. 可变参数函数 ](chap12/chap12.md)
 - [ 13. Maps ](chap13/chap13.md)
 - [ 14. 字符串  ](chap14/chap14.md)
+- [ 15. 指针   ](chap15/chap15.md)
 
 ## 
 
