@@ -18,6 +18,7 @@ This repo is my study history for golang, follow the tutouial [Go 系列教程�
 - [ 13. Maps ](chap13/chap13.md)
 - [ 14. 字符串  ](chap14/chap14.md)
 - [ 15. 指针   ](chap15/chap15.md)
+- [ 16. 结构体    ](chap16/chap16.md)
 
 ## 
 
