@@ -139,3 +139,119 @@ func main() {
 Naveen Ramanathan has salary $5200  
 Leaves left = 25
 ```
+
+
+### 接口的嵌套
+
+尽管 Go 语言没有提供继承机制，但可以通过嵌套其他的接口，创建一个新接口。
+
+我们来看看这如何实现。
+```go
+package main
+
+import (  
+    "fmt"
+)
+
+type SalaryCalculator interface {  
+    DisplaySalary()
+}
+
+type LeaveCalculator interface {  
+    CalculateLeavesLeft() int
+}
+
+type EmployeeOperations interface {  
+    SalaryCalculator
+    LeaveCalculator
+}
+
+type Employee struct {  
+    firstName string
+    lastName string
+    basicPay int
+    pf int
+    totalLeaves int
+    leavesTaken int
+}
+
+func (e Employee) DisplaySalary() {  
+    fmt.Printf("%s %s has salary $%d", e.firstName, e.lastName, (e.basicPay + e.pf))
+}
+
+func (e Employee) CalculateLeavesLeft() int {  
+    return e.totalLeaves - e.leavesTaken
+}
+
+func main() {  
+    e := Employee {
+        firstName: "Naveen",
+        lastName: "Ramanathan",
+        basicPay: 5000,
+        pf: 200,
+        totalLeaves: 30,
+        leavesTaken: 5,
+    }
+    var empOp EmployeeOperations = e
+    empOp.DisplaySalary()
+    fmt.Println("\nLeaves left =", empOp.CalculateLeavesLeft())
+}
+
+```
+
+在上述程序的第 15 行，我们创建了一个新的接口 `EmployeeOperations`，它嵌套了两个接口：`SalaryCalculator` 和 `LeaveCalculator`。
+
+如果一个类型定义了 `SalaryCalculator` 和 `LeaveCalculator` 接口里包含的方法，我们就称该类型实现了 `EmployeeOperations` 接口。
+
+在第 29 行和第 33 行，由于 `Employee` 结构体定义了 `DisplaySalary` 和 `CalculateLeavesLeft` 方法，因此它实现了接口 `EmployeeOperations`。
+
+在 46 行，`empOp` 的类型是 `EmployeeOperations`，`e` 的类型是 `Employee`，我们把 `empOp` 赋值为 `e`。接下来的两行，`empOp` 调用了 `DisplaySalary() `和 `CalculateLeavesLeft()` 方法。
+
+该程序输出：
+```sh
+Naveen Ramanathan has salary $5200
+Leaves left = 25
+```
+### 接口的零值
+
+接口的零值是 nil。对于值为 nil 的接口，其底层值（Underlying Value）和具体类型（Concrete Type）都为 nil。
+```go
+package main
+
+import "fmt"
+
+type Describer interface {  
+    Describe()
+}
+
+func main() {  
+    var d1 Describer
+    if d1 == nil {
+        fmt.Printf("d1 is nil and has type %T value %v\n", d1, d1)
+    }
+}
+
+```
+
+上面程序里的 `d1` 等于 `nil`，程序会输出：
+```sh
+d1 is nil and has type <nil> value <nil>
+```
+对于值为 nil 的接口，由于没有底层值和具体类型，当我们试图调用它的方法时，程序会产生 panic 异常。
+```go
+package main
+
+type Describer interface {
+    Describe()
+}
+
+func main() {  
+    var d1 Describer
+    d1.Describe()
+}
+
+```
+
+在上述程序中，`d1` 等于 `nil`，程序产生运行时错误 `panic： panic: runtime error: invalid memory address or nil pointer dereference [signal SIGSEGV: segmentation violation code=0xffffffff addr=0x0 pc=0xc8527] `。
+
+接口的介绍到此结束。
