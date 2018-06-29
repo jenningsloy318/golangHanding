@@ -16,14 +16,15 @@ This repo is my study history for golang, follow the tutouial [Go 系列教程�
 - [ 11. 数组和切片](chap11/chap11.md)
 - [ 12. 可变参数函数 ](chap12/chap12.md)
 - [ 13. Maps ](chap13/chap13.md)
-- [ 14. 字符串  ](chap14/chap14.md)
-- [ 15. 指针   ](chap15/chap15.md)
-- [ 16. 结构体    ](chap16/chap16.md)
-- [ 17. 方法     ](chap17/chap17.md)
-- [ 18. 接口（一）     ](chap18/chap18.md)
-- [ 19. 接口（二）     ](chap19/chap19.md)
-- [ 20. 并发     ](chap20/chap20.md)
-- [ 21. 协程     ](chap21/chap21.md)
+- [ 14. 字符串 ](chap14/chap14.md)
+- [ 15. 指针 ](chap15/chap15.md)
+- [ 16. 结构体 ](chap16/chap16.md)
+- [ 17. 方法 ](chap17/chap17.md)
+- [ 18. 接口（一） ](chap18/chap18.md)
+- [ 19. 接口（二） ](chap19/chap19.md)
+- [ 20. 并发 ](chap20/chap20.md)
+- [ 21. 协程 ](chap21/chap21.md)
+- [ 22. 信道（channel） ](chap22/chap22.md)
 
 ## 
 
