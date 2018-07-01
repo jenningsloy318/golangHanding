@@ -30,6 +30,7 @@ This repo is my study history for golang, follow the tutouial [Go 系列教程�
 - [ 25. Mutex   ](chap25/chap25.md)
 - [ 26. 结构体取代类    ](chap26/chap26.md)
 - [ 27. 组合取代继承    ](chap27/chap27.md)
+- [ 28. 多态    ](chap28/chap28.md)
   
 ## 
 
