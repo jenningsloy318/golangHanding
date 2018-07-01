@@ -25,7 +25,8 @@ This repo is my study history for golang, follow the tutouial [Go 系列教程�
 - [ 20. 并发 ](chap20/chap20.md)
 - [ 21. 协程 ](chap21/chap21.md)
 - [ 22. 信道（channel） ](chap22/chap22.md)
-- [ 22.  23. 缓冲信道和工作池 ](chap23/chap23.md)
+- [  23. 缓冲信道和工作池 ](chap23/chap23.md)
+- [  24. Select  ](chap24/chap24.md)
 
 ## 
 
