@@ -32,6 +32,7 @@ This repo is my study history for golang, follow the tutouial [Go 系列教程�
 - [ 27. 组合取代继承    ](chap27/chap27.md)
 - [ 28. 多态    ](chap28/chap28.md)
 - [ 29. Defer    ](chap29/chap29.md)
+- [ 30. 错误处理     ](chap30/chap30.md)
 
 ## 
 
