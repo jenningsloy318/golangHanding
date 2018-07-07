@@ -26,13 +26,14 @@ This repo is my study history for golang, follow the tutouial [Go 系列教程�
 - [ 21. 协程 ](chap21/chap21.md)
 - [ 22. 信道（channel） ](chap22/chap22.md)
 - [ 23. 缓冲信道和工作池 ](chap23/chap23.md)
-- [ 24. Select  ](chap24/chap24.md)
-- [ 25. Mutex   ](chap25/chap25.md)
-- [ 26. 结构体取代类    ](chap26/chap26.md)
-- [ 27. 组合取代继承    ](chap27/chap27.md)
-- [ 28. 多态    ](chap28/chap28.md)
-- [ 29. Defer    ](chap29/chap29.md)
-- [ 30. 错误处理     ](chap30/chap30.md)
+- [ 24. Select](chap24/chap24.md)
+- [ 25. Mutex](chap25/chap25.md)
+- [ 26. 结构体取代类  ](chap26/chap26.md)
+- [ 27. 组合取代继承 ](chap27/chap27.md)
+- [ 28. 多态  ](chap28/chap28.md)
+- [ 29. Defer ](chap29/chap29.md)
+- [ 30. 错误处理](chap30/chap30.md)
+- [ 31. 自定义错误](chap31/chap31.md)
 
 ## 
 
