@@ -36,6 +36,8 @@ This repo is my study history for golang, follow the tutouial [Go 系列教程�
 - [ 31. 自定义错误](chap31/chap31.md)
 - [ 32. panic 和 recover ](chap32/chap32.md)
 - [ 33. 函数是一等公民（头等函数）](chap33/chap33.md)
+- [ 34. 反射 ](chap34/chap34.md)
+
 ## 
 
 
