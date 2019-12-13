@@ -15,7 +15,7 @@ Go 协程是与其他函数或方法一起并发运行的函数或方法。Go �
 
 让我们创建一个 Go 协程吧。
 
-```go
+```go{.line-numbers}
 package main
 
 import (
@@ -42,7 +42,7 @@ func main() {
 现在你应该能够理解，为何我们的 Go 协程没有运行了吧。在第 11 行调用了 `go hello()` 之后，程序控制没有等待 hello 协程结束，立即返回到了代码下一行，打印 main function。接着由于没有其他可执行的代码，Go 主协程终止，于是 hello 协程就没有机会运行了。
 
 我们现在修复这个问题。
-```go
+```go{.line-numbers}
 package main
 
 import (  
@@ -68,7 +68,7 @@ func main() {
 ### 启动多个 Go 协程
 
 为了更好地理解 Go 协程，我们再编写一个程序，启动多个 Go 协程。 
-```go
+```go{.line-numbers}
 package main
 
 import (  
