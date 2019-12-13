@@ -26,8 +26,8 @@ This repo is my study history for golang, follow the tutouial [Go 系列教程�
 - [ 21. 协程 ](chap21/chap21.md)
 - [ 22. 信道（channel） ](chap22/chap22.md)
 - [ 23. 缓冲信道和工作池 ](chap23/chap23.md)
-- [ 24. Select](chap24/chap24.md)
-- [ 25. Mutex](chap25/chap25.md)
+- [ 24. Select ](chap24/chap24.md)
+- [ 25. Mutex ](chap25/chap25.md)
 - [ 26. 结构体取代类  ](chap26/chap26.md)
 - [ 27. 组合取代继承 ](chap27/chap27.md)
 - [ 28. 多态  ](chap28/chap28.md)
@@ -37,6 +37,8 @@ This repo is my study history for golang, follow the tutouial [Go 系列教程�
 - [ 32. panic 和 recover ](chap32/chap32.md)
 - [ 33. 函数是一等公民（头等函数）](chap33/chap33.md)
 - [ 34. 反射 ](chap34/chap34.md)
+- [ 35. 读取文件 ](chap35/chap35.md)
+- [ 36. 写入文件 ](chap36/chap36.md)
 
 ## 
 
