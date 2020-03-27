@@ -1,0 +1,19 @@
+*               text eol=lf
+
+# These files are text and should be normalized (Convert crlf => lf)
+*.gitattributes text
+.gitignore      text
+*.md            text
+*.sh            text 
+Makefile        text
+*.go            text
+go.mod          text
+go.sum          text
+
+*.pdf           binary
+*.gif           binary
+*.png           binary
+*.zip           binary
+
+.gitattributes  export-ignore
+.gitignore      export-ignore
