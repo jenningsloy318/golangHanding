@@ -1,24 +1,24 @@
 package main
 
 import (
-	"testing"
+	"fmt"
 )
 
-func TestArray1(t *testing.T) {
+func main() {
 	var a [3]int
 	for i := 0; i <= 2; i++ {
 		a[i] = i
 	}
-	t.Log("array a is", a)
+	fmt.Printf("array a is %d\n", a)
 
 	var b = [3]int{1, 2, 3}
 	for i := 0; i < 3; i++ {
-		t.Logf("b[%d] is %d", i, b[i])
+		fmt.Printf("b[%d] is %d\n", i, b[i])
 	}
 
 	for index, value := range b {
 
-		t.Logf("array b , index is %d, and value is %d\n", index, value)
+		fmt.Printf("index is %d, and value is %d\n", index, value)
 
 	}
 }
