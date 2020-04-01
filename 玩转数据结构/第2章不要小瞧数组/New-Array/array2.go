@@ -22,19 +22,19 @@ func NewDefaultArray() Array {
 }
 
 // GetArraySize get array size
-func (t Array) GetArraySize() int {
+func (a *Array) GetArraySize() int {
 
-	return t.size
+	return a.size
 }
 
 //GetCapacity  get the capacity of the array
-func (t Array) GetCapacity() int {
-	return cap(t.data)
+func (a *Array) GetCapacity() int {
+	return cap(a.data)
 }
 
 // IsEmpty check if the size is empty
-func (t Array) IsEmpty() bool {
-	return t.size == 0
+func (a *Array) IsEmpty() bool {
+	return a.size == 0
 }
 func main() {
 
