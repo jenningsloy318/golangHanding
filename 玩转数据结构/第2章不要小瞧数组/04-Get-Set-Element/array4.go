@@ -41,6 +41,11 @@ func (a *Array) IsEmpty() bool {
 	return a.size == 0
 }
 
+//PrintAarray will print all elements of the array
+func (a *Array) PrintAarray() {
+	fmt.Printf("now the size of array is: %d, items of the array is %d\n", a.size, a.data[:a.size])
+}
+
 // AddLast will add an item to the last
 func (a *Array) AddLast(element int) {
 
@@ -97,29 +102,29 @@ func (a *Array) Set(index int, element int) {
 //ToString will print the array with string
 func (a *Array) ToString() string {
 	var stringSlice []string
-	for _, e := range a.data {
-		stringSlice = append(stringSlice, strconv.Itoa(e))
+	for i := 0; i < a.size; i++ {
+		stringSlice = append(stringSlice, strconv.Itoa(a.data[i]))
 	}
 
 	return strings.Join(stringSlice[:], ",")
 
 }
+
 func main() {
 
 	array := NewDefaultArray()
-	fmt.Printf("array size is: %d\n", array.GetArraySize())
+	array.PrintAarray()
 
 	array.AddLast(6)
-	fmt.Printf("now the size of array is: %d, items of the array is %d\n", array.size, array.data)
+	array.PrintAarray()
 
 	array.Add(0, 7)
-	fmt.Printf("now the size of array is: %d, items of the array is %d\n", array.size, array.data)
+	array.PrintAarray()
+
 	array.Add(1, 8)
-	fmt.Printf("now the size of array is: %d, items of the array is %d\n", array.size, array.data)
+	array.PrintAarray()
 
-	fmt.Println(array.ToString())
-
-	array.Set(3, 1024)
-	fmt.Println(array.ToString())
-	fmt.Println(array.Get(2))
+	array.Set(2, 1024)
+	fmt.Printf("String list of the array elements is: %s \n", array.ToString())
+	fmt.Printf("The value of %d element in array is: %d\n", 2, array.Get(2))
 }

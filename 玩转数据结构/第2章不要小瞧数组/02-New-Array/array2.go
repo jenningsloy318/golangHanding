@@ -36,13 +36,17 @@ func (a *Array) GetCapacity() int {
 func (a *Array) IsEmpty() bool {
 	return a.size == 0
 }
+
+//PrintAarray will print all elements of the array
+func (a *Array) PrintAarray() {
+	fmt.Printf("now the size of array is: %d, items of the array is %d\n", a.size, a.data[:a.size])
+}
+
 func main() {
 
 	arry1 := NewDefaultArray()
-	fmt.Println(arry1.GetArraySize())
-	fmt.Println(arry1.GetCapacity())
+	arry1.PrintAarray()
 
 	arry2 := NewArray(5)
-	fmt.Println(arry2.GetArraySize())
-	fmt.Println(arry2.GetCapacity())
+	arry2.PrintAarray()
 }

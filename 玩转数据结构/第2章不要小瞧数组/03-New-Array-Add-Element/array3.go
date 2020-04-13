@@ -39,6 +39,11 @@ func (a *Array) IsEmpty() bool {
 	return a.size == 0
 }
 
+//PrintAarray will print all elements of the array
+func (a *Array) PrintAarray() {
+	fmt.Printf("now the size of array is: %d, items of the array is %d\n", a.size, a.data[:a.size])
+}
+
 // AddLast will add an item to the last
 func (a *Array) AddLast(element int) {
 
@@ -79,14 +84,15 @@ func (a *Array) Add(index int, element int) {
 func main() {
 
 	array := NewDefaultArray()
-	fmt.Printf("array size is: %d\n", array.GetArraySize())
+	array.PrintAarray()
 
 	array.AddLast(6)
-	fmt.Printf("now the size of array is: %d, items of the array is %d\n", array.size, array.data)
+	array.PrintAarray()
 
 	array.Add(0, 7)
-	fmt.Printf("now the size of array is: %d, items of the array is %d\n", array.size, array.data)
+	array.PrintAarray()
+
 	array.Add(1, 8)
-	fmt.Printf("now the size of array is: %d, items of the array is %d\n", array.size, array.data)
+	array.PrintAarray()
 
 }
