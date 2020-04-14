@@ -157,8 +157,8 @@ func (a *Array) Remove(index int) int {
 
 	a.size--
 	//shrink the arary if the size is half of the capacity
-	if a.size == cap(a.data)/2 {
-		a.resize(a.size)
+	if a.size == cap(a.data)/4 && cap(a.data)/2 != 0 {
+		a.resize(cap(a.data) / 2)
 	}
 	return returnElement
 }
