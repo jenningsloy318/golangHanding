@@ -1,4 +1,4 @@
-package main
+package array
 
 import (
 	"fmt"
@@ -185,21 +185,4 @@ func (a *Array) resize(newCapacity int) {
 		newData[i] = a.data[i]
 	}
 	a.data = newData
-}
-func main() {
-
-	array := NewDefaultArray()
-
-	cap := array.GetCapacity()
-
-	for i := 0; i < cap; i++ {
-		array.AddLast(2 * i)
-	}
-
-	array.PrintAarray()
-
-	for i := 0; i < 6; i++ {
-		array.RemoveLast()
-		array.PrintAarray()
-	}
 }

@@ -1,4 +1,4 @@
-package main
+package array
 
 import "fmt"
 
@@ -40,13 +40,4 @@ func (a *Array) IsEmpty() bool {
 //PrintAarray will print all elements of the array
 func (a *Array) PrintAarray() {
 	fmt.Printf("now the size of array is: %d, items of the array is %d\n", a.size, a.data[:a.size])
-}
-
-func main() {
-
-	arry1 := NewDefaultArray()
-	arry1.PrintAarray()
-
-	arry2 := NewArray(5)
-	arry2.PrintAarray()
 }

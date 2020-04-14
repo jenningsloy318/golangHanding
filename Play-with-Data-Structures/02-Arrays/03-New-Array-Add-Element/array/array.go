@@ -1,4 +1,4 @@
-package main
+package array
 
 import (
 	"fmt"
@@ -78,21 +78,5 @@ func (a *Array) Add(index int, element int) {
 
 	a.data[index] = element
 	a.size++
-
-}
-
-func main() {
-
-	array := NewDefaultArray()
-	array.PrintAarray()
-
-	array.AddLast(6)
-	array.PrintAarray()
-
-	array.Add(0, 7)
-	array.PrintAarray()
-
-	array.Add(1, 8)
-	array.PrintAarray()
 
 }

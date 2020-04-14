@@ -1,4 +1,4 @@
-package main
+package array
 
 import (
 	"fmt"
@@ -110,21 +110,64 @@ func (a *Array) ToString() string {
 
 }
 
-func main() {
+// Contains will check if the array contains certain element
+func (a *Array) Contains(element int) bool {
 
-	array := NewDefaultArray()
-	array.PrintAarray()
+	for i := 0; i < a.size; i++ {
+		if a.data[i] == element {
+			return true
+		}
+	}
+	return false
+}
 
-	array.AddLast(6)
-	array.PrintAarray()
+//Find check if the array contains certain element, return the index if exist, return -1 if not exist
+func (a *Array) Find(element int) (index int, err error) {
 
-	array.Add(0, 7)
-	array.PrintAarray()
+	for i := 0; i < a.size; i++ {
+		if a.data[i] == element {
+			return i, nil
+		}
+	}
+	return -1, fmt.Errorf("Don't find the element")
 
-	array.Add(1, 8)
-	array.PrintAarray()
+}
 
-	array.Set(2, 1024)
-	fmt.Printf("String list of the array elements is: %s \n", array.ToString())
-	fmt.Printf("The value of %d element in array is: %d\n", 2, array.Get(2))
+//Remove will delete the element by index, and return the value of the element
+func (a *Array) Remove(index int) int {
+	if index < 0 || index > a.size {
+		fmt.Println("invalid index")
+	}
+
+	returnElement := a.data[index]
+	for i := index + 1; i < a.size; i++ {
+		a.data[i-1] = a.data[i]
+	}
+
+	a.size--
+	return returnElement
+}
+
+//RemoveLast remove the last element
+func (a *Array) RemoveLast() int {
+	index := a.size - 1
+	return a.Remove(index)
+
+}
+
+//RemoveFirst remove the first element
+func (a *Array) RemoveFirst() int {
+
+	return a.Remove(0)
+}
+
+//RemoveElement remove the element
+func (a *Array) RemoveElement(element int) {
+	index, err := a.Find(element)
+	if err != nil {
+		fmt.Errorf("don't find the element")
+		return
+	}
+
+	a.Remove(index)
 }
