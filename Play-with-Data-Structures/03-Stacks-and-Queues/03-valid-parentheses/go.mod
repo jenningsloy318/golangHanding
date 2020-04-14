@@ -1,4 +1,4 @@
-module array-stack
+module valid-parentheses
 
 go 1.14
 
