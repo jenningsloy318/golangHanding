@@ -1,7 +1,7 @@
 package queue
 
 //Queue define an interface
-type Queue interface {
+type LoopQueue interface {
 	GetSize() int        // get size of the stack
 	IsEmpty() bool       // check if the stack is empty
 	Enqueue(element int) // push element to stack
