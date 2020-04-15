@@ -1,6 +1,9 @@
 package main
 
-import "array"
+import (
+	"array"
+	"fmt"
+)
 
 func main() {
 
@@ -9,5 +12,5 @@ func main() {
 	for i := 0; i <= 5; i++ {
 		newAS.Push(i)
 	}
-	newAS.PrintAarray()
+	fmt.Println(newAS.ToString())
 }

@@ -117,8 +117,7 @@ func (a *Array) ToString() string {
 		stringSlice = append(stringSlice, strconv.Itoa(a.data[i]))
 	}
 
-	return strings.Join(stringSlice[:], ",")
-
+	return fmt.Sprintf("stack size = %d,capacity =%d,stack Bottom: [%s] Top\n", a.size, a.GetCapacity(), strings.Join(stringSlice[:], ","))
 }
 
 // Contains will check if the array contains certain element

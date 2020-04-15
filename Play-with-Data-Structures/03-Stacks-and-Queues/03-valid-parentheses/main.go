@@ -10,6 +10,7 @@ func isValid(s string) bool {
 	for _, c := range s {
 		if c == '{' || c == '[' || c == '(' {
 			newAS.Push(c)
+			fmt.Println(newAS.ToString())
 		} else {
 			if newAS.IsEmpty() {
 				return false
@@ -27,6 +28,7 @@ func isValid(s string) bool {
 		}
 
 	}
+
 	return newAS.IsEmpty()
 }
 

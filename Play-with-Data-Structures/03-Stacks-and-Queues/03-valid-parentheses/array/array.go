@@ -116,7 +116,7 @@ func (a *Array) ToString() string {
 		stringSlice = append(stringSlice, string(a.data[i]))
 	}
 
-	return strings.Join(stringSlice[:], ",")
+	return fmt.Sprintf("queue size = %d,capacity =%d,Queue Head: [%s] Tail\n", a.size, a.GetCapacity(), strings.Join(stringSlice[:], ","))
 
 }
 

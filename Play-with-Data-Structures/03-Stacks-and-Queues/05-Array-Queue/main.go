@@ -1,6 +1,9 @@
 package main
 
-import "array"
+import (
+	"array"
+	"fmt"
+)
 
 func main() {
 
@@ -8,10 +11,10 @@ func main() {
 
 	for i := 0; i <= 15; i++ {
 		newAS.Enqueue(i)
-		newAS.PrintAarray()
+		fmt.Println(newAS.ToString())
 		if i%3 == 2 {
 			newAS.Dequeue()
-			newAS.PrintAarray()
+			fmt.Println(newAS.ToString())
 		}
 	}
 }

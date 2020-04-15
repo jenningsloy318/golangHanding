@@ -41,11 +41,6 @@ func (a *Array) IsEmpty() bool {
 	return a.size == 0
 }
 
-//PrintAarray will print all elements of the array
-func (a *Array) PrintAarray() {
-	fmt.Printf("now the size of array is: %d, capacity is %d, items of the array is %d\n", a.size, a.GetCapacity(), a.data[:a.size])
-}
-
 // AddLast will add an item to the last
 func (a *Array) AddLast(element int) {
 
@@ -117,7 +112,7 @@ func (a *Array) ToString() string {
 		stringSlice = append(stringSlice, strconv.Itoa(a.data[i]))
 	}
 
-	return strings.Join(stringSlice[:], ",")
+	return fmt.Sprintf("queue size = %d,capacity =%d,Queue Head: [%s] Tail\n", a.size, a.GetCapacity(), strings.Join(stringSlice[:], ","))
 
 }
 
