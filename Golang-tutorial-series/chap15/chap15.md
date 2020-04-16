@@ -222,3 +222,24 @@ func main() {
 在线运行程序
 
 上面的程序会抛出编译错误：<span style="color:red">ain.go:6: invalid operation: p++ (non-numeric type *[3]int)</span>。
+
+###当指针指向的是一个slice的时候，要取出slice的元素，必须将指针加括号`(*a)[x]` ， 不能使用简写`a[x]`
+```go
+package pointer
+
+import (
+	"testing"
+)
+
+func TestPointer1(t *testing.T) {
+
+	type stringSlice []string
+	var a = &stringSlice{}
+
+	*a = append(*a, "c")
+
+	// when a variable is a pointer to a slice, if we want to get the element of the slice, we should use (*a)[index]
+	t.Log((*a)[0])
+
+}
+```
