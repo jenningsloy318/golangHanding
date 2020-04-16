@@ -7,20 +7,20 @@ import (
 
 //Array declare new Array, and the array will implement the Stack interface
 type Array struct {
-	data []rune
+	data []string
 	size int
 }
 
 // NewArray create new array
 func NewArray(capacity int) Array {
 
-	return Array{data: make([]rune, capacity), size: 0}
+	return Array{data: make([]string, capacity), size: 0}
 
 }
 
 // NewDefaultArray create array with default size
 func NewDefaultArray() Array {
-	return Array{data: make([]rune, 10), size: 0}
+	return Array{data: make([]string, 10), size: 0}
 
 }
 
@@ -46,7 +46,7 @@ func (a *Array) PrintAarray() {
 }
 
 // AddLast will add an item to the last
-func (a *Array) AddLast(element rune) {
+func (a *Array) AddLast(element string) {
 
 	//if a.size == cap(a.data) {
 	//	fmt.Errorf("Array is full, AddLast can't add element to the Array")
@@ -57,12 +57,12 @@ func (a *Array) AddLast(element rune) {
 }
 
 // AddFirst will add an item to the first
-func (a *Array) AddFirst(element rune) {
+func (a *Array) AddFirst(element string) {
 	a.Add(0, element)
 }
 
 // Add will add element at the index postion
-func (a *Array) Add(index int, element rune) {
+func (a *Array) Add(index int, element string) {
 
 	if index < 0 || index > a.size {
 		fmt.Errorf("invalid index")
@@ -84,7 +84,7 @@ func (a *Array) Add(index int, element rune) {
 }
 
 //Get will the value for index
-func (a *Array) Get(index int) rune {
+func (a *Array) Get(index int) string {
 	if index < 0 || index > a.size {
 		fmt.Errorf("invalid index")
 	}
@@ -92,17 +92,17 @@ func (a *Array) Get(index int) rune {
 }
 
 //GetLast the last element
-func (a *Array) GetLast() rune {
+func (a *Array) GetLast() string {
 	return a.Get(a.size - 1)
 }
 
 //GetFirst the first element
-func (a *Array) GetFirst() rune {
+func (a *Array) GetFirst() string {
 	return a.Get(0)
 }
 
 //Set will set value for index
-func (a *Array) Set(index int, element rune) {
+func (a *Array) Set(index int, element string) {
 	if index < 0 || index > a.size {
 		fmt.Println("invalid index")
 	}
@@ -113,7 +113,7 @@ func (a *Array) Set(index int, element rune) {
 func (a *Array) ToString() string {
 	var stringSlice []string
 	for i := 0; i < a.size; i++ {
-		stringSlice = append(stringSlice, string(a.data[i]))
+		stringSlice = append(stringSlice, a.data[i])
 	}
 
 	return fmt.Sprintf("queue size = %d,capacity =%d,Queue Head: [%s] Tail\n", a.size, a.GetCapacity(), strings.Join(stringSlice[:], ","))
@@ -121,7 +121,7 @@ func (a *Array) ToString() string {
 }
 
 // Contains will check if the array contains certain element
-func (a *Array) Contains(element rune) bool {
+func (a *Array) Contains(element string) bool {
 
 	for i := 0; i < a.size; i++ {
 		if a.data[i] == element {
@@ -132,7 +132,7 @@ func (a *Array) Contains(element rune) bool {
 }
 
 //Find check if the array contains certain element, return the index if exist, return -1 if not exist
-func (a *Array) Find(element rune) (index int, err error) {
+func (a *Array) Find(element string) (index int, err error) {
 
 	for i := 0; i < a.size; i++ {
 		if a.data[i] == element {
@@ -144,7 +144,7 @@ func (a *Array) Find(element rune) (index int, err error) {
 }
 
 //Remove will delete the element by index, and return the value of the element
-func (a *Array) Remove(index int) rune {
+func (a *Array) Remove(index int) string {
 	if index < 0 || index > a.size {
 		fmt.Println("invalid index")
 	}
@@ -163,20 +163,20 @@ func (a *Array) Remove(index int) rune {
 }
 
 //RemoveLast remove the last element
-func (a *Array) RemoveLast() rune {
+func (a *Array) RemoveLast() string {
 	index := a.size - 1
 	return a.Remove(index)
 
 }
 
 //RemoveFirst remove the first element
-func (a *Array) RemoveFirst() rune {
+func (a *Array) RemoveFirst() string {
 
 	return a.Remove(0)
 }
 
 //RemoveElement remove the element
-func (a *Array) RemoveElement(element rune) {
+func (a *Array) RemoveElement(element string) {
 	index, err := a.Find(element)
 	if err != nil {
 		fmt.Errorf("don't find the element")
@@ -189,7 +189,7 @@ func (a *Array) RemoveElement(element rune) {
 //RemoveElement remove the element
 func (a *Array) resize(newCapacity int) {
 
-	newData := make([]rune, newCapacity)
+	newData := make([]string, newCapacity)
 	for i := 0; i < a.size; i++ {
 		newData[i] = a.data[i]
 	}
@@ -203,18 +203,18 @@ func (a *Array) GetSize() int {
 }
 
 //Push implement interface Stack
-func (a *Array) Push(element rune) {
+func (a *Array) Push(element string) {
 
 	a.AddLast(element)
 }
 
 //Pop implement interface Stack
-func (a *Array) Pop() rune {
+func (a *Array) Pop() string {
 
 	return a.RemoveLast()
 }
 
 //Peek implement interface Stack
-func (a *Array) Peek() rune {
+func (a *Array) Peek() string {
 	return a.GetLast()
 }

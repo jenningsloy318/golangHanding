@@ -3,12 +3,13 @@ package main
 import (
 	"array"
 	"fmt"
+	"strings"
 )
 
-func isValid(s string) bool {
+func isValid(s []string) bool {
 	var newAS = array.NewDefaultArray()
 	for _, c := range s {
-		if c == '{' || c == '[' || c == '(' {
+		if c == "{" || c == "[" || c == "(" {
 			newAS.Push(c)
 			fmt.Println(newAS.ToString())
 		} else {
@@ -16,13 +17,13 @@ func isValid(s string) bool {
 				return false
 			}
 			topChar := newAS.Pop()
-			if c == '(' && rune(topChar) != ')' {
+			if c == "(" && topChar != ")" {
 				return false
 			}
-			if c == '[' && topChar != ']' {
+			if c == "[" && topChar != "]" {
 				return false
 			}
-			if c == '{' && topChar != '}' {
+			if c == "{" && topChar != "}" {
 				return false
 			}
 		}
@@ -34,6 +35,7 @@ func isValid(s string) bool {
 
 func main() {
 
-	char := "({}])"
-	fmt.Println(isValid(char))
+	char := "({})"
+	charSlice := strings.SplitAfter(char, "")
+	fmt.Println(isValid(charSlice))
 }
