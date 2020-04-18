@@ -46,8 +46,8 @@ func NewLinkedList() *LinkedList {
 func (l *LinkedList) ToString() string {
 	var allStrings []string
 
-	for node := l.head; node != nil; node = node.next {
-		allStrings = append(allStrings, fmt.Sprintf("%v", node.element))
+	for currentNode := l.head; currentNode != nil; currentNode = currentNode.next {
+		allStrings = append(allStrings, fmt.Sprintf("%v", currentNode.element))
 	}
 	return strings.Join(allStrings[:], ",")
 }
@@ -61,7 +61,7 @@ func (l *LinkedList) AddFirst(element interface{}) {
 
 }
 
-func (l *LinkedList) Add(element interface{}, index int) error {
+func (l *LinkedList) Add(index int, element interface{}) error {
 	if index < 0 || index > l.size {
 		return fmt.Errorf("Invalid index")
 	}
@@ -82,7 +82,7 @@ func (l *LinkedList) Add(element interface{}, index int) error {
 }
 
 func (l *LinkedList) AddLast(element interface{}) {
-	l.Add(element, l.size)
+	l.Add(l.size, element)
 }
 
 func TestLinkedList(t *testing.T) {

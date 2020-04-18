@@ -75,13 +75,69 @@ func (l *LinkedList) ToString() string {
 	}
 	return strings.Join(allStrings[:], ",")
 }
+
+func (l *LinkedList) Get(index int) (element interface{}) {
+
+	if index < 0 || index > l.size {
+		return fmt.Errorf("Invalid index")
+	}
+
+	currentNode := l.dummyHead.next
+	for i := 0; i < index; i++ {
+		currentNode = currentNode.next
+	}
+
+	return currentNode.element
+}
+
+func (l *LinkedList) GetFirst(index int) (element interface{}) {
+
+	return l.Get(0)
+}
+
+func (l *LinkedList) GetLast(index int) (element interface{}) {
+
+	return l.Get(l.size - 1)
+}
+
+func (l *LinkedList) Set(index int, element interface{}) {
+
+	if index < 0 || index > l.size {
+		fmt.Errorf("Invalid index")
+	}
+
+	currentNode := l.dummyHead.next
+	for i := 0; i < index; i++ {
+		currentNode = currentNode.next
+	}
+
+	currentNode.element = element
+}
+
+func (l *LinkedList) Contains(element interface{}) bool {
+
+	for currentNode := l.dummyHead.next; currentNode != nil; currentNode = currentNode.next {
+		if currentNode.element == element {
+			return true
+		}
+	}
+	return false
+}
+
 func TestLinkedList(t *testing.T) {
 	newList := NewLinkedList()
-	newList.AddFirst(2222)
+	newList.AddFirst(1)
 	t.Log(newList.ToString())
-	newList.AddFirst(3333)
+	newList.AddFirst(2)
 	t.Log(newList.ToString())
-	newList.Add(1, 4444)
+	newList.Add(1, 3)
 	t.Log(newList.ToString())
+
+	newList.Add(2, 4444)
+	t.Log(newList.ToString())
+
+	t.Logf("list contains 3: %t", newList.Contains(3))
+
+	t.Logf("list contains ddd3: %t", newList.Contains("dd3"))
 
 }
