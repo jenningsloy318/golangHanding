@@ -153,11 +153,11 @@ func (l *LinkedList) RemoveLast() (element interface{}) {
 
 //Stack define an interface
 type Stack interface {
-	GetSize() int             // get size of the stack
-	IsEmpty() bool            // check if the stack is empty
-	Push(element interface{}) // push element to stack
-	Pop() interface{}         // fetch the top element of the stack
-	Peek() interface{}        // verify the top value
+	GetSize() int                // get size of the stack
+	IsEmpty() bool               // check if the stack is empty
+	Push(element interface{})    // push element to stack
+	Pop() (element interface{})  // fetch the top element of the stack
+	Peek() (element interface{}) // verify the top value
 }
 
 func (l *LinkedList) GetSize() int {
