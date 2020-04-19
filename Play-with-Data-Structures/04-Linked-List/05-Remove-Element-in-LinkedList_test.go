@@ -90,12 +90,12 @@ func (l *LinkedList) Get(index int) (element interface{}) {
 	return currentNode.element
 }
 
-func (l *LinkedList) GetFirst(index int) (element interface{}) {
+func (l *LinkedList) GetFirst() (element interface{}) {
 
 	return l.Get(0)
 }
 
-func (l *LinkedList) GetLast(index int) (element interface{}) {
+func (l *LinkedList) GetLast() (element interface{}) {
 
 	return l.Get(l.size - 1)
 }
