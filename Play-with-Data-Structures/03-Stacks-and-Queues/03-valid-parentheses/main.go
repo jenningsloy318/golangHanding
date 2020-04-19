@@ -6,9 +6,10 @@ import (
 	"strings"
 )
 
-func isValid(s []string) bool {
+func isValid(s string) bool {
+	charSlice := strings.SplitAfter(s, "")
 	var newAS = array.NewDefaultArray()
-	for _, c := range s {
+	for _, c := range charSlice {
 		if c == "{" || c == "[" || c == "(" {
 			newAS.Push(c)
 			fmt.Println(newAS.ToString())
@@ -36,6 +37,5 @@ func isValid(s []string) bool {
 func main() {
 
 	char := "({})"
-	charSlice := strings.SplitAfter(char, "")
-	fmt.Println(isValid(charSlice))
+	fmt.Println(isValid(char))
 }
