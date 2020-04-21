@@ -2,13 +2,12 @@ package queue
 
 import (
 	"fmt"
-	"strconv"
-	"strings"
+	"testing"
 )
 
 //Queue define a struct of Queue
 type Queue struct {
-	data  []int
+	data  []interface{}
 	front int
 	tail  int
 	size  int
@@ -18,7 +17,7 @@ type Queue struct {
 func NewQueue(capacity int) Queue {
 
 	return Queue{
-		data:  make([]int, capacity+1),
+		data:  make([]interface{}, capacity+1),
 		front: 0,
 		tail:  0,
 		size:  0,
@@ -42,13 +41,21 @@ func (q *Queue) GetCapacity() int {
 	return cap(q.data) - 1
 }
 
+type LoopQueue interface {
+	GetSize() int                    // get size of the stack
+	IsEmpty() bool                   // check if the stack is empty
+	Enqueue(element interface{})     // push element to stack
+	Dequeue() (element interface{})  // fetch the top element of the stack
+	GetFront() (element interface{}) // verify the top value
+}
+
 //GetSize return the size of the queue
 func (q *Queue) GetSize() int {
 	return q.size
 }
 
 //Enqueue will add an element to this queue
-func (q *Queue) Enqueue(element int) {
+func (q *Queue) Enqueue(element interface{}) {
 	// check if the queue is full, as this is loop queue, so underlying slice must have one element as nil,
 	// in normal queue when tail +1 as new tail when adding a new element, if this value is equal to front,  we treat queue is full , so there is no space for new element,
 	// for loop queue , as maybe the front index is larger that tails, so use (tail + 1) % sliceCapacity  to get its  remainder as a new tail， if the remainder is equal to front, we treat it full
@@ -66,7 +73,7 @@ func (q *Queue) Enqueue(element int) {
 }
 
 //Dequeue get the head of the queue
-func (q *Queue) Dequeue() int {
+func (q *Queue) Dequeue() (element interface{}) {
 	sliceCapacity := cap(q.data)
 
 	if q.IsEmpty() {
@@ -89,17 +96,17 @@ func (q *Queue) ToString() string {
 
 	//we can loop the queue from front to tail , and convert the front and tail to actual slice index
 	sliceCapacity := cap(q.data)
-	var queueSlice []string
+	var queueSlice []interface{}
 	for i := q.front; i != q.tail; i = (i + 1) % sliceCapacity {
-		queueSlice = append(queueSlice, strconv.Itoa(q.data[i]))
+		queueSlice = append(queueSlice, q.data[i])
 
 	}
-	return fmt.Sprintf("queue size = %d,capacity = %d,Queue Head: [%s] Tail\n", q.size, q.GetCapacity(), strings.Join(queueSlice[:], ","))
+	return fmt.Sprintf("queue size = %d,capacity = %d,Queue Head: %v Tail\n", q.size, q.GetCapacity(), queueSlice)
 }
 
 func (q *Queue) resize(capacity int) {
 	oldSliceCapacity := cap(q.data)
-	newData := make([]int, capacity+1)
+	newData := make([]interface{}, capacity+1)
 	for i := 0; i < q.size; i++ {
 		// i=0: data[front] ==> newData[0]
 		// i=1: data[front +1]  ==>newData[1]
@@ -110,4 +117,17 @@ func (q *Queue) resize(capacity int) {
 	q.front = 0
 	q.tail = q.size
 
+}
+
+func TestAarrayLoopQueue(t *testing.T) {
+	var loopQueue = NewDefaultQueue()
+
+	for i := 0; i <= 15; i++ {
+		loopQueue.Enqueue(i)
+		t.Log(loopQueue.ToString())
+		if i%3 == 2 {
+			loopQueue.Dequeue()
+			t.Log(loopQueue.ToString())
+		}
+	}
 }

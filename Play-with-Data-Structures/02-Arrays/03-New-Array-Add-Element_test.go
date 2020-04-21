@@ -2,24 +2,25 @@ package array
 
 import (
 	"fmt"
+	"testing"
 )
 
 //Array declare new Array
 type Array struct {
-	data []int
+	data []interface{}
 	size int
 }
 
 // NewArray create new array
 func NewArray(capacity int) Array {
 
-	return Array{data: make([]int, capacity), size: 0}
+	return Array{data: make([]interface{}, capacity), size: 0}
 
 }
 
 // NewDefaultArray create array with default size
 func NewDefaultArray() Array {
-	return Array{data: make([]int, 10), size: 0}
+	return Array{data: make([]interface{}, 10), size: 0}
 
 }
 
@@ -39,13 +40,19 @@ func (a *Array) IsEmpty() bool {
 	return a.size == 0
 }
 
-//PrintAarray will print all elements of the array
-func (a *Array) PrintAarray() {
-	fmt.Printf("now the size of array is: %d, items of the array is %d\n", a.size, a.data[:a.size])
+//ToString will print the array with string
+func (a *Array) ToString() string {
+	var stringSlice []interface{}
+	for i := 0; i < a.size; i++ {
+		stringSlice = append(stringSlice, a.data[i])
+	}
+
+	return fmt.Sprintf("now the size of array is: %d, items of the array is %v\n", a.size, stringSlice)
+
 }
 
 // AddLast will add an item to the last
-func (a *Array) AddLast(element int) {
+func (a *Array) AddLast(element interface{}) {
 
 	//if a.size == cap(a.data) {
 	//	fmt.Errorf("Array is full, AddLast can't add element to the Array")
@@ -56,12 +63,12 @@ func (a *Array) AddLast(element int) {
 }
 
 // AddFirst will add an item to the first
-func (a *Array) AddFirst(element int) {
+func (a *Array) AddFirst(element interface{}) {
 	a.Add(0, element)
 }
 
 // Add will add element at the index postion
-func (a *Array) Add(index int, element int) {
+func (a *Array) Add(index int, element interface{}) {
 
 	if a.size == cap(a.data) {
 		fmt.Errorf("Array is full, AddLast can't add element to the Array")
@@ -78,5 +85,21 @@ func (a *Array) Add(index int, element int) {
 
 	a.data[index] = element
 	a.size++
+
+}
+
+func TestArray(t *testing.T) {
+
+	array := NewDefaultArray()
+	t.Log(array.ToString())
+
+	array.AddLast(6)
+	t.Log(array.ToString())
+
+	array.Add(0, 7)
+	t.Log(array.ToString())
+
+	array.Add(1, 8)
+	t.Log(array.ToString())
 
 }
