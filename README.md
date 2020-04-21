@@ -1,4 +1,4 @@
 This repo contains the metrials and process of learning golang
-
+- [Go-Tips](./Go-Tips)
 - [Golang-tutorial-series](./Golang-tutorial-series)
-- [OpenCensus](./OpenCensus)
+- [Play-with-Data-Structures](./Play-with-Data-Structures) 
