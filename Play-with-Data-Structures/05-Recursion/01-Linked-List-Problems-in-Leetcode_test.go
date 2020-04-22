@@ -9,14 +9,13 @@ type ListNode struct {
 }
 
 func removeElements(head *ListNode, val int) *ListNode {
-	var dummyHead = ListNode{
+	var dummyHead = &ListNode{
 		Val:  1024,
-		Next: nil,
+		Next: head,
 	}
 
-	dummyHead.Next = head
-
-	for previousNode := dummyHead; previousNode != nil; previousNode = previousNode.next {
+    
+	for  previousNode := dummyHead; previousNode.Next != nil;  {
 		if previousNode.Next.Val == val {
 			previousNode.Next = previousNode.Next.Next
 		} else {
