@@ -13,6 +13,25 @@ type ListNode struct {
 	Next *ListNode
 }
 
+func newListNodes(s []int) *ListNode {
+
+	if s == nil && len(s) == 0 {
+		fmt.Errorf("Invalid slice, the slice is empty")
+		return nil
+	}
+
+	dummyHead := &ListNode{
+		Val:  1024,
+		Next: &ListNode{},
+	}
+
+	for i, curNode := 0, dummyHead.Next; i < len(s)-1; i, curNode = i+1, curNode.Next {
+		curNode.Val = s[i]
+		curNode.Next = &ListNode{Val: s[i+1]}
+	}
+
+	return dummyHead.Next
+}
 func removeElements(head *ListNode, val int) *ListNode {
 	var dummyHead = &ListNode{
 		Val:  1024,
@@ -39,30 +58,16 @@ func toString(head *ListNode) string {
 
 }
 
-func TestLinkedList(t *testing.T) {
+func TestConstruct(t *testing.T) {
+	s := []int{1, 2, 6, 3, 4, 5, 6}
+	x := newListNodes(s)
+	t.Log(toString(x))
 
-	var head = &ListNode{
-		Val: 1,
-		Next: &ListNode{
-			Val: 2,
-			Next: &ListNode{
-				Val: 6,
-				Next: &ListNode{
-					Val: 3,
-					Next: &ListNode{
-						Val: 4,
-						Next: &ListNode{
-							Val: 5,
-							Next: &ListNode{
-								Val:  6,
-								Next: nil,
-							},
-						},
-					},
-				},
-			},
-		},
-	}
+}
+
+func TestLinkedList(t *testing.T) {
+	s := []int{1, 2, 6, 3, 4, 5, 6}
+	head := newListNodes(s)
 
 	t.Logf("Removing %d from %v", 6, toString(head))
 	result := removeElements(head, 6)
