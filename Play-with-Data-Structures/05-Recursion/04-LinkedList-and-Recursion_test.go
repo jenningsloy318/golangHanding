@@ -33,7 +33,7 @@ func newListNodes(s []int) *ListNode {
 	return dummyHead.Next
 }
 
-//递归函数，每一次都需要处理基本问题，此处，每次的逻辑都要对head进行处理，包括是否为空，是否 包含对应的值；步骤是先处理一个基本问题（为空的情况），然后构建更小的范围问题的解决方案，构建完成后然后对基本问题进行判断
+//递归函数，每一次都需要处理基本问题，此处，每次的逻辑都要对head进行处理，包括是否为空，是否 包含对应的值；步骤是先处理一个基本问题（为空的情况），然后构建更小的范围问题的解决方案，构建完成后然后对基本问题进行判断(更小问题有解了，但是除去更小解决方案后，还剩余一个基本元素，对这个基本元素进行解决)
 func removeElements(head *ListNode, val int) *ListNode {
 
 	if head == nil {
@@ -53,12 +53,22 @@ func removeElements(head *ListNode, val int) *ListNode {
 func toString(head *ListNode) string {
 	var stringSlice []string
 	for currNode := head; currNode != nil; currNode = currNode.Next {
-		stringSlice = append(stringSlice, fmt.Sprintf("%d ->", currNode.Val))
+		if currNode.Next != nil {
+			stringSlice = append(stringSlice, fmt.Sprintf("%d -->", currNode.Val))
+		} else {
+			stringSlice = append(stringSlice, fmt.Sprintf("%d --> null", currNode.Val))
+		}
 	}
 	return fmt.Sprintf("%v", stringSlice)
-
 }
 
+func toStringRecursion(head *ListNode) string {
+	if head == nil {
+		return "null"
+	}
+	result := toStringRecursion(head.Next)
+	return fmt.Sprintf("%v --> %v", head.Val, result)
+}
 func TestConstruct(t *testing.T) {
 	s := []int{1, 2, 6, 3, 4, 5, 6}
 	x := newListNodes(s)
@@ -71,8 +81,11 @@ func TestLinkedList(t *testing.T) {
 	head := newListNodes(s)
 
 	t.Logf("Removing %d from %v", 6, toString(head))
+	t.Logf("Removing %d from [ %v ]", 6, toStringRecursion(head))
+
 	result := removeElements(head, 6)
 
 	t.Logf("After remove %s", toString(result))
+	t.Logf("After remove [ %s ]", toStringRecursion(result))
 
 }

@@ -52,10 +52,13 @@ func removeElements(head *ListNode, val int) *ListNode {
 func toString(head *ListNode) string {
 	var stringSlice []string
 	for currNode := head; currNode != nil; currNode = currNode.Next {
-		stringSlice = append(stringSlice, fmt.Sprintf("%d ->", currNode.Val))
+		if currNode.Next != nil {
+			stringSlice = append(stringSlice, fmt.Sprintf("%d -->", currNode.Val))
+		} else {
+			stringSlice = append(stringSlice, fmt.Sprintf("%d --> null", currNode.Val))
+		}
 	}
 	return fmt.Sprintf("%v", stringSlice)
-
 }
 
 func TestConstruct(t *testing.T) {
