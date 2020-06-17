@@ -51,12 +51,7 @@ type ListNode struct {
 	Next *ListNode
 }
 
-type LinkedList struct {
-	dummyHead *ListNode
-	size      int
-}
-
-func (l *LinkedList) addListNode(node *ListNode, val int) *ListNode {
+func addListNode(node *ListNode, val int) *ListNode {
 
 	newNode := &ListNode{
 		Val: val,
@@ -64,19 +59,26 @@ func (l *LinkedList) addListNode(node *ListNode, val int) *ListNode {
 
 	if node == nil {
 		node = newNode
-		l.size++
 		return node
 	}
 
 	if node.Next != nil {
-		node.Next = l.addListNode(node.Next, val)
+		node.Next = addListNode(node.Next, val)
 	} else {
 		node.Next = newNode
-		l.size++
 	}
 
 	return node
 
+}
+
+func toString(head *ListNode) {
+	var allString []int
+	for node := head; node != nil; node = node.Next {
+		allString = append(allString, node.Val)
+
+	}
+	fmt.Printf("Items in the Linked LIst: %v\n", allString)
 }
 
 func getDecimalValue(head *ListNode) int {
@@ -93,30 +95,14 @@ func getDecimalValue(head *ListNode) int {
 	return sum
 }
 
-func toString(head *ListNode) {
-	var allString []int
-	for node := head; node != nil; node = node.Next {
-		allString = append(allString, node.Val)
-
-	}
-	fmt.Printf("Items in the Linked LIst: %v\n", allString)
-}
 func TestConvertBinaryNumberInALinkedListtoInteger(t *testing.T) {
-	input := []int{1, 0, 1}
-	var dummyHead = &ListNode{}
-
-	l := &LinkedList{
-		dummyHead: dummyHead,
-		size:      0,
-	}
+	input := []int{1, 0, 1, 1, 1, 0, 0}
+	var Head *ListNode
 
 	for _, val := range input {
-		l.addListNode(dummyHead, val)
-
+		Head = addListNode(Head, val)
 	}
-
-	toString(l.dummyHead.Next)
-	t.Logf("Input size: %d", l.size)
-	t.Logf("Result: %d", getDecimalValue(l.dummyHead.Next))
+	toString(Head)
+	t.Logf("Result: %d", getDecimalValue(Head))
 
 }

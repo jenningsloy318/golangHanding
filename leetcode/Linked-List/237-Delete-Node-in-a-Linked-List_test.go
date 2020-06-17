@@ -41,12 +41,7 @@ type ListNode struct {
 	Next *ListNode
 }
 
-type LinkedList struct {
-	dummyHead *ListNode
-	size      int
-}
-
-func (l *LinkedList) addListNode(node *ListNode, val int) *ListNode {
+func addListNode(node *ListNode, val int) *ListNode {
 
 	newNode := &ListNode{
 		Val: val,
@@ -54,25 +49,17 @@ func (l *LinkedList) addListNode(node *ListNode, val int) *ListNode {
 
 	if node == nil {
 		node = newNode
-		l.size++
 		return node
 	}
 
 	if node.Next != nil {
-		node.Next = l.addListNode(node.Next, val)
+		node.Next = addListNode(node.Next, val)
 	} else {
 		node.Next = newNode
-		l.size++
 	}
 
 	return node
 
-}
-
-func deleteNode(node *ListNode) {
-	node.Val = node.Next.Val
-	node.Next = node.Next.Next
-	node = nil
 }
 
 func toString(head *ListNode) {
@@ -83,22 +70,22 @@ func toString(head *ListNode) {
 	}
 	fmt.Printf("Items in the Linked List: %v\n", allString)
 }
+
+func deleteNode(node *ListNode) {
+	node.Val = node.Next.Val
+	node.Next = node.Next.Next
+	node = nil
+}
+
 func TestConvertBinaryNumberInALinkedListtoInteger(t *testing.T) {
 	input := []int{4, 5, 1, 9}
-	var dummyHead = &ListNode{}
-
-	l := &LinkedList{
-		dummyHead: dummyHead,
-		size:      0,
-	}
+	var Head *ListNode
 
 	for _, val := range input {
-		l.addListNode(dummyHead, val)
-
+		Head = addListNode(Head, val)
 	}
-	toString(l.dummyHead.Next)
-	t.Logf("Input size: %d", l.size)
+	toString(Head)
 
-	deleteNode(l.dummyHead.Next.Next.Next)
-	toString(l.dummyHead.Next)
+	deleteNode(Head.Next)
+	toString(Head)
 }

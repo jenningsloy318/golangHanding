@@ -50,6 +50,7 @@ func toString(head *ListNode) {
 	}
 	fmt.Printf("%v\n", allString)
 }
+
 func removeElements(head *ListNode, val int) *ListNode {
 
 	// check linked list is empty
@@ -72,13 +73,13 @@ func removeElements(head *ListNode, val int) *ListNode {
 func TestRemoveLinkedListElements(t *testing.T) {
 	//	1->2->6->3->4->5->6
 	input := []int{1, 2, 6, 3, 4, 5, 6}
-	var dummmyHead = &ListNode{}
+	var Head *ListNode
 	for _, val := range input {
-		dummmyHead = addListNode(dummmyHead, val)
+		Head = addListNode(Head, val)
 	}
 	t.Log("Before removal")
-	toString(dummmyHead.Next)
-	ret := removeElements(dummmyHead.Next, 6)
+	toString(Head)
+	ret := removeElements(Head, 6)
 	t.Log("After removal")
 	toString(ret)
 
