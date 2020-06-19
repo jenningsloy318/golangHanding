@@ -108,6 +108,38 @@ func hasCycle(head *ListNode) bool {
 		}
 	}
 }
+
+//hasCycle2
+/*
+onsidering two pointers at different speed - a slow pointer and a fast pointer.
+The slow pointer moves one step at a time while the fast pointer moves two steps at a time.
+
+If there is no cycle in the list, the fast pointer will eventually reach the end and we can return false in this case.
+
+Now consider a cyclic list and imagine the slow and fast pointers are two runners racing around a circle track.
+The fast runner will eventually meet the slow runner.
+*/
+func hasCycle2(head *ListNode) bool {
+
+	if head == nil || head.Next == nil {
+		return false
+	}
+
+	slowPointer := head
+	fastPointer := head.Next
+
+	for slowPointer != fastPointer {
+		if fastPointer == nil || fastPointer.Next == nil {
+			return false
+		}
+
+		slowPointer = slowPointer.Next
+		fastPointer = fastPointer.Next.Next
+	}
+
+	return true
+}
+
 func TestLinkedListCycle(t *testing.T) {
 	//	1->2->6->3->4->5->6
 	input := []int{1, 2, 6, 3, 4, 5, 6}
@@ -117,8 +149,8 @@ func TestLinkedListCycle(t *testing.T) {
 	}
 	t.Logf("Original Linked list: %v", toString(Head))
 
-	t.Logf("Linked list is cycled: %t", hasCycle(Head))
+	t.Logf("Linked list is cycled: %t", hasCycle2(Head))
 
-	t.Logf("Linked list is cycled: %t\n", hasCycle(makeCycle(Head, 0)))
+	t.Logf("Linked list is cycled: %t\n", hasCycle2(makeCycle(Head, 0)))
 
 }
