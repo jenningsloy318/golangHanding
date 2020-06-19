@@ -40,13 +40,13 @@ func addListNode(node *ListNode, val int) *ListNode {
 
 }
 
-func toString(head *ListNode) {
+func toString(head *ListNode) string {
 	var allString []int
 	for node := head; node != nil; node = node.Next {
 		allString = append(allString, node.Val)
 
 	}
-	fmt.Printf("%v\n", allString)
+	return fmt.Sprintf("%v\n", allString)
 }
 
 func deleteDuplicates(head *ListNode) *ListNode {
@@ -69,10 +69,8 @@ func TestRemoveDuplicatesfromSortedList(t *testing.T) {
 	for _, val := range input {
 		Head = addListNode(Head, val)
 	}
-	t.Log("Before removal")
-	toString(Head)
-	ret := deleteDuplicates(Head)
-	t.Log("After removal")
-	toString(ret)
+	t.Logf("Before removal: %s", toString(Head))
+
+	t.Logf("After removal: %s", toString(deleteDuplicates(Head)))
 
 }

@@ -72,13 +72,13 @@ func addListNode(node *ListNode, val int) *ListNode {
 
 }
 
-func toString(head *ListNode) {
+func toString(head *ListNode) string {
 	var allString []int
 	for node := head; node != nil; node = node.Next {
 		allString = append(allString, node.Val)
 
 	}
-	fmt.Printf("Items in the Linked LIst: %v\n", allString)
+	return fmt.Sprintf("%v\n", allString)
 }
 
 func getDecimalValue(head *ListNode) int {
@@ -102,7 +102,8 @@ func TestConvertBinaryNumberInALinkedListtoInteger(t *testing.T) {
 	for _, val := range input {
 		Head = addListNode(Head, val)
 	}
-	toString(Head)
-	t.Logf("Result: %d", getDecimalValue(Head))
+	t.Logf("Original Linked list: %s", toString(Head))
+
+	t.Logf("Converted value of the Linked List: %d", getDecimalValue(Head))
 
 }

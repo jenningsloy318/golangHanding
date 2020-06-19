@@ -59,13 +59,13 @@ func addListNode(node *ListNode, val int) *ListNode {
 
 }
 
-func toString(head *ListNode) {
+func toString(head *ListNode) string {
 	var allString []int
 	for node := head; node != nil; node = node.Next {
 		allString = append(allString, node.Val)
 
 	}
-	fmt.Printf("Items in the Linked List: %v\n", allString)
+	return fmt.Sprintf("%v\n", allString)
 }
 
 func middleNode(head *ListNode) *ListNode {
@@ -91,7 +91,8 @@ func TestConvertBinaryNumberInALinkedListtoInteger(t *testing.T) {
 	for _, val := range input {
 		Head = addListNode(Head, val)
 	}
-	toString(Head)
+	t.Logf("Original Linked list: %s", toString(Head))
 
-	toString(middleNode(Head))
+	t.Logf("Middle of the linked list is: %s", toString(middleNode(Head)))
+
 }

@@ -37,13 +37,13 @@ func add(head *ListNode, val int) *ListNode {
 	}
 
 }
-func toString(head *ListNode) {
+func toString(head *ListNode) string {
 	var nodeSlice []int
 	for node := head; node != nil; node = node.Next {
 		nodeSlice = append(nodeSlice, node.Val)
 
 	}
-	fmt.Printf("Items in the Linked List: %v\n", nodeSlice)
+	return fmt.Sprintf("%v\n", nodeSlice)
 }
 
 func mergeTwoLists(l1 *ListNode, l2 *ListNode) *ListNode {
@@ -63,14 +63,14 @@ func TestReverseLinkedList(t *testing.T) {
 		Head1 = add(Head1, val)
 	}
 
-	toString(Head1)
+	t.Logf("First Linked list is: %s ", toString(Head1))
 
 	var Head2 *ListNode
 	input2 := []int{-7}
 	for _, val := range input2 {
 		Head2 = add(Head2, val)
 	}
-	toString(Head2)
+	t.Logf("First Linked list is: %s ", toString(Head2))
 
-	toString(mergeTwoLists(Head1, Head2))
+	t.Logf("After merged: %s", toString(mergeTwoLists(Head1, Head2)))
 }
