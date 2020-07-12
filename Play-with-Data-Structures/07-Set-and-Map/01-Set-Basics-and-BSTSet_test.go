@@ -41,7 +41,7 @@ func NewBsTree() *BsTree {
 	}
 }
 
-func (b *BsTree) Size() int {
+func (b *BsTree) getSize() int {
 	return b.size
 }
 
@@ -158,6 +158,6 @@ func TestBstreeBasic(t *testing.T) {
 	for _, word := range testSlice {
 		newBst.Add(word)
 	}
-	t.Logf("Total uniq Words: %d", newBst.Size())
+	t.Logf("Total uniq Words: %d", newBst.getSize())
 
 }
