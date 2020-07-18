@@ -7,6 +7,7 @@ import (
 	"os"
 	"strings"
 	"testing"
+	"time"
 )
 
 type linkedListSet interface {
@@ -160,9 +161,11 @@ func TestLinkedListSet(t *testing.T) {
 	t.Logf("Total Words: %d", len(testSlice))
 
 	newBst := NewLinkedList()
+	t1 := time.Now()
 	for _, word := range testSlice {
 		newBst.Add(word)
 	}
-	t.Logf("Total uniq Words: %d", newBst.GetSize())
+	duration := time.Since(t1)
+	t.Logf("Total uniq Words: %d, process time %d ", newBst.GetSize(), duration)
 
 }

@@ -7,6 +7,7 @@ import (
 	"os"
 	"strings"
 	"testing"
+	"time"
 )
 
 type bstSet interface {
@@ -155,9 +156,11 @@ func TestBstreeBasic(t *testing.T) {
 	t.Logf("Total Words: %d", len(testSlice))
 
 	newBst := NewBsTree()
+	t1 := time.Now()
 	for _, word := range testSlice {
 		newBst.Add(word)
 	}
-	t.Logf("Total uniq Words: %d", newBst.getSize())
+	duration := time.Since(t1)
+	t.Logf("Total uniq Words: %d, process time %d ", newBst.getSize(), duration)
 
 }
