@@ -166,4 +166,21 @@ func TestLinkedList(t *testing.T) {
 	newList.Remove("to")
 	t.Logf("Now the frequence of  to is : %d.\n", newList.Get("to"))
 
+	intMap := make(map[string]int)
+	t2 := time.Now()
+	for _, word := range testSlice {
+
+		if _, ok := intMap[word]; ok {
+			intMap[word] += 1
+		} else {
+			intMap[word] = 1
+		}
+
+	}
+	duration2 := time.Since(t2)
+	t.Logf("Total uniq Words: %d, process time %fs ", len(intMap), duration2.Seconds())
+	t.Logf("Frequence of  to is : %d.\n", intMap["to"])
+	delete(intMap, "to")
+	t.Logf("Frequence of  to is : %d.\n", intMap["to"])
+
 }
